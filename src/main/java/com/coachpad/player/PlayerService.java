@@ -1,6 +1,8 @@
 package com.coachpad.player;
 import org.springframework.stereotype.Service;
 import com.coachpad.player.dto.CreatePlayerRequest;
+import java.util.List;
+
 
 @Service
 public class PlayerService {
@@ -24,5 +26,13 @@ public class PlayerService {
         );
 
         return playerRepository.save(player);
+    }
+
+    public List<Player> getAllActivePlayers() {
+        return playerRepository.findByStatusOrderByLastNameAsc(PlayerStatus.ACTIVE);
+    }
+
+    public List<Player> getAllArchivedPlayers() {
+        return playerRepository.findByStatusOrderByLastNameAsc(PlayerStatus.ARCHIVED);
     }
 }
