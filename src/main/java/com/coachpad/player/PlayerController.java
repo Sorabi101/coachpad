@@ -43,4 +43,14 @@ public class PlayerController {
     public Player updatePlayerInfo(@PathVariable Long id, @Valid @RequestBody UpdatePlayerRequest request) {
         return playerService.updatePlayer(id, request);
     }
+
+    @PatchMapping("/{id}/archive")
+    public Player archivePlayer(@PathVariable Long id) {
+        return playerService.archivePlayer(id);
+    }
+
+    @PatchMapping("/{id}/restore")
+    public Player restorePlayer(@PathVariable Long id) {
+        return playerService.restorePlayer(id);
+    }
 }

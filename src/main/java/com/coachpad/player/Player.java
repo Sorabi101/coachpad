@@ -115,4 +115,8 @@ public class Player {
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
+
+    public void setStatus(PlayerStatus status) {
+        this.status = status;
+    }
 }

@@ -77,4 +77,26 @@ public class PlayerService {
         return playerRepository.save(player);
     }
 
+    public Player archivePlayer(Long playerId) {
+        Player player = playerRepository.findById(playerId)
+            .orElse(null);
+
+       if(player.getStatus() == PlayerStatus.ACTIVE) {
+           player.setStatus(PlayerStatus.ARCHIVED);
+       }
+
+        return playerRepository.save(player);
+    }
+
+    public Player restorePlayer(Long playerId) {
+        Player player = playerRepository.findById(playerId)
+            .orElse(null);
+
+        if(player.getStatus() == PlayerStatus.ARCHIVED) {
+            player.setStatus(PlayerStatus.ACTIVE);
+        }
+
+        return playerRepository.save(player);
+    }
+
 }
