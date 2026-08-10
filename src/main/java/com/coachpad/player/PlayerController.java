@@ -1,4 +1,6 @@
 package com.coachpad.player;
+import java.util.List;
+
 
 import com.coachpad.player.dto.CreatePlayerRequest;
 import jakarta.validation.Valid;
@@ -19,5 +21,15 @@ public class PlayerController {
     @ResponseStatus(HttpStatus.CREATED)
     public Player createPlayer(@Valid @RequestBody CreatePlayerRequest request) {
         return playerService.createPlayer(request);
+    }
+
+    @GetMapping("/active")
+    public List<Player> getAllActivePlayers() {
+        return playerService.getAllActivePlayers();
+    }
+
+    @GetMapping("/archived")
+    public List<Player> getAllArchivedPlayers() {
+        return playerService.getAllArchivedPlayers();
     }
 }
