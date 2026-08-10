@@ -32,4 +32,9 @@ public class PlayerController {
     public List<Player> getAllArchivedPlayers() {
         return playerService.getAllArchivedPlayers();
     }
+
+    @GetMapping("/{id}")
+    public Player viewPlayer(@PathVariable Long id) {
+        return playerService.getPlayerById(id);
+    }
 }

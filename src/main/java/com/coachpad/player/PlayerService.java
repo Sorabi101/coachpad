@@ -35,4 +35,9 @@ public class PlayerService {
     public List<Player> getAllArchivedPlayers() {
         return playerRepository.findByStatusOrderByLastNameAsc(PlayerStatus.ARCHIVED);
     }
+
+    public Player getPlayerById(Long playerId) {
+        return playerRepository.findById(playerId)
+            .orElse(null);
+    }
 }
