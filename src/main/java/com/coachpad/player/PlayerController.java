@@ -3,6 +3,7 @@ import java.util.List;
 
 
 import com.coachpad.player.dto.CreatePlayerRequest;
+import com.coachpad.player.dto.UpdatePlayerRequest;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -36,5 +37,10 @@ public class PlayerController {
     @GetMapping("/{id}")
     public Player viewPlayer(@PathVariable Long id) {
         return playerService.getPlayerById(id);
+    }
+
+    @PatchMapping("/{id}")
+    public Player updatePlayerInfo(@PathVariable Long id, @Valid @RequestBody UpdatePlayerRequest request) {
+        return playerService.updatePlayer(id, request);
     }
 }
